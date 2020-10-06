@@ -264,7 +264,7 @@ func (b *execBuilder) makeObjectExec(typeName string, fields schema.FieldList, p
 	//	1) using method resolvers
 	//	2) Or resolver is not an interface type
 	typeAssertions := make(map[string]*TypeAssertion)
-	if !b.schema.UseFieldResolvers || resolverType.Kind() != reflect.Interface {
+	if !b.schema.UseFieldResolvers || resolverType.Kind() != reflect.Interface || resolverType.Kind() == reflect.Interface {
 		for _, impl := range possibleTypes {
 			methodIndex := findMethod(resolverType, "To"+impl.Name)
 			if methodIndex == -1 {
