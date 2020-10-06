@@ -1,7 +1,7 @@
 package trace
 
 import (
-	"github.com/graph-gophers/graphql-go/errors"
+	"github.com/bitshiftza/graphql-go/errors"
 )
 
 type TraceValidationFinishFunc = TraceQueryFinishFunc

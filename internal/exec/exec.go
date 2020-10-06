@@ -8,14 +8,14 @@ import (
 	"reflect"
 	"sync"
 
-	"github.com/graph-gophers/graphql-go/errors"
-	"github.com/graph-gophers/graphql-go/internal/common"
-	"github.com/graph-gophers/graphql-go/internal/exec/resolvable"
-	"github.com/graph-gophers/graphql-go/internal/exec/selected"
-	"github.com/graph-gophers/graphql-go/internal/query"
-	"github.com/graph-gophers/graphql-go/internal/schema"
-	"github.com/graph-gophers/graphql-go/log"
-	"github.com/graph-gophers/graphql-go/trace"
+	"github.com/bitshiftza/graphql-go/errors"
+	"github.com/bitshiftza/graphql-go/internal/common"
+	"github.com/bitshiftza/graphql-go/internal/exec/resolvable"
+	"github.com/bitshiftza/graphql-go/internal/exec/selected"
+	"github.com/bitshiftza/graphql-go/internal/query"
+	"github.com/bitshiftza/graphql-go/internal/schema"
+	"github.com/bitshiftza/graphql-go/log"
+	"github.com/bitshiftza/graphql-go/trace"
 )
 
 type Request struct {
@@ -325,7 +325,7 @@ func (r *Request) execList(ctx context.Context, sels []selected.Selection, typ *
 				r.execSelectionSet(ctx, sels, typ.OfType, &pathSegment{path, i}, s, resolver.Index(i), &entryouts[i])
 			}(i)
 		}
-		for i := 0; i < concurrency;i++ {
+		for i := 0; i < concurrency; i++ {
 			sem <- struct{}{}
 		}
 	} else {
